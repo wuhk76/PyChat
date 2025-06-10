@@ -43,11 +43,11 @@ class Pychat:
         else:
             rmessage = rmessage.load.decode('utf-8', errors = 'ignore')
         return rmessage
-    
+
     def dialup(self, dest, iface, key):
         self.dest = dest
         self.iface = iface
-        self.key = key.encode()
+        self.key = key.encode() if len(key) > 0 else key
         print(f'Connected to {self.dest} on interface {self.iface}')
 
 pychat = Pychat()
