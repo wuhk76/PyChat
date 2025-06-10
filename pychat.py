@@ -1,3 +1,5 @@
+import os
+import time
 import subprocess
 from scapy.all import *
 class Pychat:
@@ -43,10 +45,36 @@ while running:
         running = False
         break
     elif message == ':r':
+        pychat.send(' ')
         print(f'({pychat.dest}):{pychat.receive()}')
     elif message == ':s':
-        message = input('(you):')
-        pychat.send(message)
+        pychat.send(input('(you):'))
+    elif message == ':rr':
+        while running:
+            print(f'({pychat.dest}):{pychat.receive()}')
+            time.sleep(1)
+    elif message == ':rs':
+        while running:
+            pychat.send(input('(you):'))
+            time.sleep(1)
+    elif message == ':fr':
+        pychat.send(' ')
+        path = os.path.dirname(__file__)
+        rname = pychat.receive()
+        time.sleep(1)
+        with open(f'{path}/{rname}', 'x') as file:
+            file.write(pychat.receive())
+        print(f'({pychat.dest}):{rname}')
+    elif message[0:3] == ':fs':
+        path = message.split(' ')
+        path = path[1]
+        tname = path.split('/')
+        tname = tname[-1]
+        with open(f'{path}', 'r') as file:
+            data = file.read()
+        pychat.send(tname)
+        time.sleep(1)
+        pychat.send(data)
     else:
         pychat.send(message)
         print(f'({pychat.dest}):{pychat.receive()}')
