@@ -59,19 +59,19 @@ while running:
             time.sleep(1)
     elif message == ':fr':
         pychat.send(' ')
-        path = os.path.dirname(__file__)
+        rpath = os.path.dirname(__file__)
         rname = pychat.receive()
         time.sleep(1)
-        with open(f'{path}/{rname}', 'x') as file:
-            file.write(pychat.receive())
+        with open(f'{rpath}/{rname}', 'x') as rfile:
+            rfile.write(pychat.receive())
         print(f'({pychat.dest}):{rname}')
     elif message[0:3] == ':fs':
-        path = message.split(' ')
-        path = path[1]
-        tname = path.split('/')
+        tpath = message.split(' ')
+        tpath = tpath[1]
+        tname = tpath.split('/')
         tname = tname[-1]
-        with open(f'{path}', 'r') as file:
-            data = file.read()
+        with open(f'{tpath}', 'r') as tfile:
+            data = tfile.read()
         pychat.send(tname)
         time.sleep(1)
         pychat.send(data)
