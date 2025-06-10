@@ -82,7 +82,7 @@ while running:
         pychat.send(' ')
         rpath = os.path.dirname(__file__)
         rname = pychat.receive()
-        time.sleep(1)
+        time.sleep(2)
         with open(f'{rpath}/{rname}', 'x') as rfile:
             rfile.write(pychat.receive())
         print(f'({pychat.dest}):{rname}')
@@ -94,7 +94,7 @@ while running:
         with open(f'{tpath}', 'r') as tfile:
             data = tfile.read()
         pychat.send(tname)
-        time.sleep(1)
+        time.sleep(2)
         pychat.send(data)
     else:
         pychat.send(message)
