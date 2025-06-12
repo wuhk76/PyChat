@@ -3,11 +3,18 @@ Python 3 wireless chat program
 
 What is PyChat?
 
-	PyChat is an experimental, wireless, point-to-point chatting program written in Python for Linux operating systems. Unlike conventional chatting programs, PyChat directly sends WiFi packets from device to device, without the need of a router. It accomplishes this by using the packet injection ability of certain wireless cards in monitor mode.
+	PyChat is an experimental, wireless, point-to-point chatting program written in Python for Linux operating systems. Unlike conventional chatting programs, PyChat directly sends
+WiFi packets from device to device, without the need of a router. It accomplishes this by using the packet injection ability of certain wireless cards in monitor mode.
 
 Setting Up
 
-	To set PyChat, the file (pychat.py) must be downloaded and placed in an appropriate folder. A wireless card that supports monitor mode and packet injection must be installed to the system. Python libraries Scapy, Cryptography, Subprocess, Time, and OS must also be installed. It is also important to note that because packet transmission his a hardware specific task, the Python program may have to run with administrator privileges. When started, the program will ask for the MAC address of the monitor mode interface that it will chat with, along with the interface name of the current wireless card that is in monitor mode, for example (wlan0mon). The program might also ask for a Fernet encryption key, but it can be left blank. However, by leaving it blank, the packets can have publicly visible messages. When chatting, a user can directly input a message to the desired host, but the program will wait afterwords for the host to respond before the user to chat again. This is a common bug that is still in the process of fixing. However, there are special commands the user can input when chatting that can allow certain functions of the program.
+	To set PyChat, the file (pychat.py) must be downloaded and placed in an appropriate folder. A wireless card that supports monitor mode and packet injection must be installed to the
+system. Python libraries Scapy, Cryptography, Subprocess, Base64, Time, and OS must also be installed. It is also important to note that because packet transmission his a hardware specific 
+task, the Python program may have to run with administrator privileges. When started, the program will ask for the MAC address of the monitor mode interface that it will chat with, along with
+the interface name of the current wireless card that is in monitor mode, for example (wlan0mon). The program might also ask for a Fernet encryption key, but it can be left blank. However, 
+by leaving it blank, the packets can have publicly visible messages. When chatting, a user can directly input a message to the desired host, but the program will wait afterwords for the host
+to respond before the user to chat again. This is a common bug that is still in the process of fixing. However, there are special commands the user can input when chatting that can allow 
+certain functions of the program.
 
 Commands (always start with “:” or “^”)
 
@@ -33,7 +40,8 @@ File Receive:  “:fr” (no options)
 
 File Send: “:fs” {/path/to/file}
 
-	This is an experimental feature that sends a file to the receiving computer. Due to limitations of WiFi packets, it can only send files of a certian size. The maximum possiable size is around 2.2-2.3 kb, but it can be much smaller due to certain encodings.
+	This is an experimental feature that sends a file to the receiving computer. Due to limitations of WiFi packets, it can only send files of a certian size. The maximum possiable size 
+is around 2.2-2.3 kb, but it can be much smaller due to certain encodings.
 
 Quit: “^C” or “:q”
 
