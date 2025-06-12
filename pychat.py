@@ -128,6 +128,9 @@ while running:
         time.sleep(2)
         rdata = pychat.receive()
 
+        if type(rdata) == str:
+            rdata = rdata.encode('utf-8')
+
         with open(f'{rpath}/{rname}', 'xb') as rfile:
             rfile.write(rdata)
 
